@@ -257,6 +257,7 @@ while True:
             if len(todos) == 0:
                 print('nothing...')
             for item in todos:
+                item = item.title()
                 print(item)     # 1
                                 # 2
                                 # 3
