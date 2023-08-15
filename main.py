@@ -491,7 +491,7 @@ while True:
 
     match user_action:
         case 'add':
-            todo = input('type your todo: ') + '\n'
+            # todo = input('type your todo: ') + '\n'
             # read files from older docuements
             file = open('todos.txt', 'r')
             todos = file.readlines()
@@ -512,16 +512,11 @@ while True:
             print('total items: ', len(todos))
             if len(todos) == 0:
                 print('nothing...')
-
             for index, item in enumerate(todos):
-                # print(index + 1, ". ", item)
+                item = item.strip('\n')
                 print(f"{index + 1}.{item}")
-
             for item in todos:
                 item = item.title()
-                # print(item)     # 1
-                                # 2
-                                # 3
         case 'edit':
             print('Got it')
             number = int(input('Number of the todo to edit: '))
