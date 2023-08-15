@@ -368,8 +368,11 @@ while True:
             print('total items: ', len(todos))
             if len(todos) == 0:
                 print('nothing...')
+
             for index, item in enumerate(todos):
-                print(index + 1, ". ", item)
+                # print(index + 1, ". ", item)
+                print(f"{index + 1}.{item}")
+
             for item in todos:
                 item = item.title()
                 print(item)     # 1
