@@ -270,17 +270,128 @@
 #
 
 
+#
+# # todos = [1, 2, 3]
+# todos = []
+# while True:
+#     user_action = input('type add, show, edit or exit: ')
+#
+#     match user_action:
+#         case 'add':
+#             todo = input('type your todo: ')
+#             todos.append(todo)
+#         case 'show':
+#             # print(todos) # [1, 2, 3]
+#             print('total items: ', len(todos))
+#             if len(todos) == 0:
+#                 print('nothing...')
+#             for item in todos:
+#                 item = item.title()
+#                 print(item)     # 1
+#                                 # 2
+#                                 # 3
+#         case 'edit':
+#             print('Got it')
+#             number = int(input('Number of the todo to edit: '))
+#             number = number - 1
+#             print(number)
+#             existing_todo = todos[number]
+#             print('older value: ', existing_todo)
+#             new_todo = input('enter new todo: ')
+#             print('new value: ', new_todo)
+#             todos[number] = new_todo
+#
+#         case 'exit':
+#             break
+#         case _:
+#             print('do not enter random input')
+#
+# print("bye")
+#
+
+
+#
+# a = input('Enter some input: ')
+# b = int(a)
+# print(type(a))
+# print(type(b))
+#
+
+
+#
+# myList = ['a', 'b', 'c']
+# print(myList)
+# print(myList[0])
+# print(myList[1])
+# print(myList[1] == 'b')
+# print(myList.index('b'))
+# # setting items
+# myList.__setitem__(1, 'd')
+# print(myList)
+# # setting items
+# myList[1] = 'e'
+# print(myList)
+# # getting items
+# # myList.__getitem__(2)
+# print(myList.__getitem__(2))
+# print(myList)
+#
+
+#
+# fileNames = ["1.Raw Data.txt", "2.Reports.txt", "3.Presentations.txt"]
+# newfileNames = []
+# for fileName in fileNames:
+#     # print('fileName: ', fileName)
+#     # newfileName = fileName.replace('.', '_')
+#     newfileName = fileName.replace('.', '_', 1)
+#     newfileNames.append(newfileName)
+# print(newfileNames)
+# print(type(newfileNames))
+# for newfileName in newfileNames:
+#     print(newfileName)
+#
 
 
 
+#
+# todos = [1, 2, 3]
+todos = []
+while True:
+    user_action = input('type add, show, edit or exit: ')
 
+    match user_action:
+        case 'add':
+            todo = input('type your todo: ')
+            todos.append(todo)
+        case 'show':
+            # print(todos) # [1, 2, 3]
+            print('total items: ', len(todos))
+            if len(todos) == 0:
+                print('nothing...')
+            for index, item in enumerate(todos):
+                print(index + 1, ". ", item)
+            for item in todos:
+                item = item.title()
+                print(item)     # 1
+                                # 2
+                                # 3
+        case 'edit':
+            print('Got it')
+            number = int(input('Number of the todo to edit: '))
+            number = number - 1
+            print(number)
+            existing_todo = todos[number]
+            print('older value: ', existing_todo)
+            new_todo = input('enter new todo: ')
+            print('new value: ', new_todo)
+            todos[number] = new_todo
 
+        case 'exit':
+            break
+        case _:
+            print('do not enter random input')
 
-
-
-
-
-
+print("bye")
 
 
 
