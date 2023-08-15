@@ -242,31 +242,32 @@
 
 
 
-# todos = [1, 2, 3]
-todos = []
-while True:
-    user_action = input('type add or show or exit: ')
-
-    match user_action:
-        case 'add':
-            todo = input('type your todo: ')
-            todos.append(todo)
-        case 'show':
-            # print(todos) # [1, 2, 3]
-            print(len(todos))
-            if len(todos) == 0:
-                print('nothing...')
-            for item in todos:
-                item = item.title()
-                print(item)     # 1
-                                # 2
-                                # 3
-        case 'exit':
-            break
-        case _:
-            print('do not enter random input')
-
-print("bye")
+# # todos = [1, 2, 3]
+# todos = []
+# while True:
+#     user_action = input('type add or show or exit: ')
+#
+#     match user_action:
+#         case 'add':
+#             todo = input('type your todo: ')
+#             todos.append(todo)
+#         case 'show':
+#             # print(todos) # [1, 2, 3]
+#             print(len(todos))
+#             if len(todos) == 0:
+#                 print('nothing...')
+#             for item in todos:
+#                 item = item.title()
+#                 print(item)     # 1
+#                                 # 2
+#                                 # 3
+#         case 'exit':
+#             break
+#         case _:
+#             print('do not enter random input')
+#
+# print("bye")
+#
 
 
 
