@@ -493,21 +493,30 @@ while True:
         case 'add':
             todo = input('type your todo: ') + '\n'
             # read files from older docuements
-            file = open('todos.txt', 'r')
-            todos = file.readlines()
-            file.close()
+            # file = open('todos.txt', 'r')
+            # todos = file.readlines()
+            # file.close()
+
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
 
             todos.append(todo)
 
             # save file in txt document
-            file = open('todos.txt', 'w')
-            file.writelines(todos)
-            file.close()
+            # file = open('todos.txt', 'w')
+            # file.writelines(todos)
+            # file.close()
+            with open('todos.txt', 'w') as file:
+                file.writelines(todos)
         case 'show':
-            # read files from older docuements
-            file = open('todos.txt', 'r')
-            todos = file.readlines()
-            file.close()
+            # read files from older docuements - analog system
+            # file = open('todos.txt', 'r')
+            # todos = file.readlines()
+            # file.close()
+
+            # updated system to access file
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
 
             print('total items: ', len(todos))
 
