@@ -532,12 +532,19 @@ while True:
             number = int(input('Number of the todo to edit: '))
             number = number - 1
             print(number)
+
+            with open('todos.txt', 'r') as file:
+                todos = file.readlines()
+
             existing_todo = todos[number]
             print('older value: ', existing_todo)
             new_todo = input('enter new todo: ')
             print('new value: ', new_todo)
-            todos[number] = new_todo
 
+            todos[number] = new_todo + '\n'
+
+            with open('todos.txt', 'w') as file:
+                file.writelines(todos)
         case 'complete':
             number = int(input('number of the todo to complete: '))
             todos.pop(number - 1)
