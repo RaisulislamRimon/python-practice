@@ -1,0 +1,1 @@
+hi, reading doc.txt file now

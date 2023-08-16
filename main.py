@@ -486,80 +486,180 @@
 #
 #
 
+
+#
+# while True:
+#     user_action = input('type add, show, complete, edit or exit: ')
+#
+#     match user_action:
+#         case 'add':
+#             todo = input('type your todo: ') + '\n'
+#             # read files from older docuements
+#             # file = open('todos.txt', 'r')
+#             # todos = file.readlines()
+#             # file.close()
+#
+#             with open('todos.txt', 'r') as file:
+#                 todos = file.readlines()
+#
+#             todos.append(todo)
+#
+#             # save file in txt document
+#             # file = open('todos.txt', 'w')
+#             # file.writelines(todos)
+#             # file.close()
+#             with open('todos.txt', 'w') as file:
+#                 file.writelines(todos)
+#         case 'show':
+#             # read files from older docuements - analog system
+#             # file = open('todos.txt', 'r')
+#             # todos = file.readlines()
+#             # file.close()
+#
+#             # updated system to access file
+#             with open('todos.txt', 'r') as file:
+#                 todos = file.readlines()
+#
+#             print('total items: ', len(todos))
+#
+#             if len(todos) == 0:
+#                 print('nothing...')
+#             for index, item in enumerate(todos):
+#                 item = item.strip('\n')
+#                 print(f"{index + 1}.{item}")
+#             for item in todos:
+#                 item = item.title()
+#         case 'edit':
+#             print('Got it')
+#             number = int(input('Number of the todo to edit: '))
+#             number = number - 1
+#             print(number)
+#
+#             with open('todos.txt', 'r') as file:
+#                 todos = file.readlines()
+#
+#             existing_todo = todos[number]
+#             print('older value: ', existing_todo)
+#             new_todo = input('enter new todo: ')
+#             print('new value: ', new_todo)
+#
+#             todos[number] = new_todo + '\n'
+#
+#             with open('todos.txt', 'w') as file:
+#                 file.writelines(todos)
+#         case 'complete':
+#             number = int(input('number of the todo to complete: '))
+#
+#             with open('todos.txt', 'r') as file:
+#                 todos = file.readlines()
+#
+#             index = number - 1
+#             todo_to_remove = todos[index].strip('\n')
+#             todos.pop(index)
+#
+#             with open('todos.txt', 'w') as file:
+#                 file.writelines(todos)
+#
+#             message = f"Todo {todo_to_remove} was removed from the list."
+#             print(message)
+#
+#         case 'exit':
+#             break
+#         case _:
+#             print('do not enter random input')
+#
+# print("bye")
+#
+
+
+
+#
 while True:
     user_action = input('type add, show, complete, edit or exit: ')
 
-    match user_action:
-        case 'add':
-            todo = input('type your todo: ') + '\n'
-            # read files from older docuements
-            # file = open('todos.txt', 'r')
-            # todos = file.readlines()
-            # file.close()
+    if 'add' in user_action:
+        # todo = input('type your todo: ') + '\n'
+        todo = user_action[4:] + '\n'
+        # read files from older docuements
+        # file = open('todos.txt', 'r')
+        # todos = file.readlines()
+        # file.close()
 
-            with open('todos.txt', 'r') as file:
-                todos = file.readlines()
+        with open('todos.txt', 'r') as file:
+            todos = file.readlines()
 
-            todos.append(todo)
+        todos.append(todo)
 
-            # save file in txt document
-            # file = open('todos.txt', 'w')
-            # file.writelines(todos)
-            # file.close()
-            with open('todos.txt', 'w') as file:
-                file.writelines(todos)
-        case 'show':
-            # read files from older docuements - analog system
-            # file = open('todos.txt', 'r')
-            # todos = file.readlines()
-            # file.close()
+        # save file in txt document
+        # file = open('todos.txt', 'w')
+        # file.writelines(todos)
+        # file.close()
+        with open('todos.txt', 'w') as file:
+            file.writelines(todos)
 
-            # updated system to access file
-            with open('todos.txt', 'r') as file:
-                todos = file.readlines()
+    elif 'show' in user_action:
+        # read files from older docuements - analog system
+        # file = open('todos.txt', 'r')
+        # todos = file.readlines()
+        # file.close()
 
-            print('total items: ', len(todos))
+        # updated system to access file
+        with open('todos.txt', 'r') as file:
+            todos = file.readlines()
 
-            if len(todos) == 0:
-                print('nothing...')
-            for index, item in enumerate(todos):
-                item = item.strip('\n')
-                print(f"{index + 1}.{item}")
+        print('total items: ', len(todos))
+
+        if len(todos) == 0:
+            print('nothing...')
+        for index, item in enumerate(todos):
+            item = item.strip('\n')
+            print(f"{index + 1}.{item}")
             for item in todos:
                 item = item.title()
-        case 'edit':
-            print('Got it')
-            number = int(input('Number of the todo to edit: '))
-            number = number - 1
-            print(number)
 
-            with open('todos.txt', 'r') as file:
-                todos = file.readlines()
+    elif 'edit' in user_action:
+        print('Got it')
+        number = int(input('Number of the todo to edit: '))
+        number = number - 1
+        print(number)
 
-            existing_todo = todos[number]
-            print('older value: ', existing_todo)
-            new_todo = input('enter new todo: ')
-            print('new value: ', new_todo)
+        with open('todos.txt', 'r') as file:
+            todos = file.readlines()
 
-            todos[number] = new_todo + '\n'
+        existing_todo = todos[number]
+        print('older value: ', existing_todo)
+        new_todo = input('enter new todo: ')
+        print('new value: ', new_todo)
 
-            with open('todos.txt', 'w') as file:
-                file.writelines(todos)
-        case 'complete':
-            number = int(input('number of the todo to complete: '))
-            todos.pop(number - 1)
+        todos[number] = new_todo + '\n'
 
-        case 'exit':
-            break
-        case _:
-            print('do not enter random input')
+        with open('todos.txt', 'w') as file:
+            file.writelines(todos)
+
+    elif 'complete' in user_action:
+        number = int(input('number of the todo to complete: '))
+
+        with open('todos.txt', 'r') as file:
+            todos = file.readlines()
+
+        index = number - 1
+        todo_to_remove = todos[index].strip('\n')
+        todos.pop(index)
+
+        with open('todos.txt', 'w') as file:
+            file.writelines(todos)
+
+        message = f"Todo {todo_to_remove} was removed from the list."
+        print(message)
+
+    elif 'exit' in user_action:
+        break
+    elif '_' in user_action:
+        print('do not enter random input')
 
 print("bye")
 
-
-
-
-
+#
 
 
 
