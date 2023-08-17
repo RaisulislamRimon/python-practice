@@ -577,6 +577,9 @@
 while True:
     user_action = input('type add, show, complete, edit or exit: ')
 
+    # if 'add' in user_action or 'new' in user_action or 'more' in user_action:
+    # if 'add' in user_action and 'new' in user_action:
+    # if 'add' not in user_action:
     if 'add' in user_action:
         # todo = input('type your todo: ') + '\n'
         todo = user_action[4:] + '\n'
@@ -619,7 +622,8 @@ while True:
 
     elif 'edit' in user_action:
         print('Got it')
-        number = int(input('Number of the todo to edit: '))
+        # number = int(input('Number of the todo to edit: '))
+        number = int(user_action[5:])
         number = number - 1
         print(number)
 
@@ -637,14 +641,19 @@ while True:
             file.writelines(todos)
 
     elif 'complete' in user_action:
-        number = int(input('number of the todo to complete: '))
+        # number = int(input('number of the todo to complete: '))
+        number = int(user_action[9:])
 
         with open('todos.txt', 'r') as file:
             todos = file.readlines()
 
         index = number - 1
-        todo_to_remove = todos[index].strip('\n')
-        todos.pop(index)
+        if len(todos) > index:
+            print('item is not found')
+            # break
+        else:
+            todo_to_remove = todos[index].strip('\n')
+            todos.pop(index)
 
         with open('todos.txt', 'w') as file:
             file.writelines(todos)
@@ -656,6 +665,8 @@ while True:
         break
     elif '_' in user_action:
         print('do not enter random input')
+    else:
+        print('command is not valid')
 
 print("bye")
 
