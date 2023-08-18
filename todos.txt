@@ -13,5 +13,3 @@ twelve
 the light off double off - fully offline
 mine
 we just made a default org
-hello
-hello18
