@@ -2261,8 +2261,8 @@ to use these functions
 """
 
 # import functions
-# from functions import get_todos, write_todos
-from modules.functions import get_todos, write_todos
+# from modules.functions import get_todos, write_todos
+from functions import get_todos, write_todos
 
 while True:
     user_action = input('type add, show, complete, edit or exit: ')
