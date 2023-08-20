@@ -35,7 +35,7 @@ data = json.loads(content)
 
 # print('type: ', type(data))  # <class 'list'>
 
-score = 0
+# score = 0
 
 for question_no, question in enumerate(data):
     print("Question No", question_no + 1, ".", question["question_text"])
@@ -50,17 +50,36 @@ for question_no, question in enumerate(data):
     #     print("Wrong answer")
 
     question["user_choice"] = user_choice
+    # if question["user_choice"] == question["correct_answer"]:
+    #     score = score + 1
+    #     # print(score)
+    #     print("Answer is correct")
+    # else:
+    #     score = score
+    #     # print(score)
+    #     print("Wrong answer")
+    #     print("The correct answer is: ", question["correct_answer"])
+
+score = 0
+
+for index, question in enumerate(data):
     if question["user_choice"] == question["correct_answer"]:
         score = score + 1
+        result = "Correct answer"
         # print(score)
-        print("Answer is correct")
+        # print("Answer is correct")
     else:
-        score = score
+        # score = score
+        result = "Wrong answer"
         # print(score)
-        print("Wrong answer")
-        print("The correct answer is: ", question["correct_answer"])
+        # print("Wrong answer")
+        # print("The correct answer is: ", question["correct_answer"])
 
-print(data)
+    message = f"{index + 1}. {result}; Your answer: {question['user_choice']},Correct answer is {question['correct_answer']}"
+    print(message)
+
+# print(data)
+
 # [{'question_text': 'What are dolphins?', 'alternative': ['Amphibians', 'Fish', 'Mammals', 'Birds'],
 # 'correct_answer': 3, 'user_choice': 1}, {'question_text': "What occupies most of the Earth's surface?",
 # 'alternative': ['Land', 'Water'], 'correct_answer': 2, 'user_choice': 2}]
