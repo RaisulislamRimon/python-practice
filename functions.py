@@ -1,6 +1,11 @@
 # def get_todos(filepath):
 # def get_todos(filepath):   # TypeError: get_todos() missing 1 required positional argument: 'filepath'
-def get_todos(filepath='todos.txt'):
+
+FILEPATH = 'todos.txt'
+
+
+# def get_todos(filepath='todos.txt'):
+def get_todos(filepath=FILEPATH):
     """ Read a text file and return the list of
     to-do items. """
     # filepath = 'todos.txt'
@@ -25,7 +30,8 @@ def get_todos(filepath='todos.txt'):
 
 # def write_todos(filepath, todos_arg):
 # def write_todos(filepath='todos.txt', todos_arg):
-def write_todos(todos_arg, filepath='todos.txt'):
+# def write_todos(todos_arg, filepath='todos.txt'):
+def write_todos(todos_arg, filepath=FILEPATH):
     """ Write the to-do items list in the text file """
     with open(filepath, 'w') as file_local:
         file_local.writelines(todos_arg)
@@ -57,7 +63,7 @@ hello world
 print(__name__)
 
 if __name__ == '__main__':
-    print("Hello")
+    print("Hello __main__")
     print(get_todos())
 else:
-    print(__name__)
+    print('__name__', __name__)

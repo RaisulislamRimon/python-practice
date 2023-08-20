@@ -2489,7 +2489,8 @@ to use these functions
 from functions import get_todos, write_todos
 import time
 
-now = time.strftime('%b %d, %Y, %H: %M: %S')
+# this is showing the current time
+now = time.strftime('%b %d, %Y;\n%H:%M:%S %p')
 print('It is: ', now)
 
 while True:
