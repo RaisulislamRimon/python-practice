@@ -1,6 +1,7 @@
 # def get_todos(filepath):
 # def get_todos(filepath):   # TypeError: get_todos() missing 1 required positional argument: 'filepath'
 
+# constant variable
 FILEPATH = 'todos.txt'
 
 
