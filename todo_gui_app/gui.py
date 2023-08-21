@@ -37,13 +37,13 @@ import PySimpleGUI as sg
 # window = PySimpleGUI.window("My ToDo App", layout="")
 layout = [[sg.Text("Write a to-do? ")],
           # [sg.Input()],
-          [sg.Input(key='-INPUT-'), sg.Button("Add to-do")],
+          [sg.Input(key='-INPUT-'), sg.Button("Add to-do", key='add-to-do')],
           [sg.Text(size=(40, 1), key='-OUTPUT-')],
           [sg.Button("Ok"), sg.Button("Quit")],
           ]
 
 # window = sg.Window('My ToDo App', layout)
-window = sg.Window('My ToDo App', layout, font=('Consolas', 14))
+window = sg.Window('My ToDo App', layout, font=('Consolas', 13))
 
 while True:
     event, values = window.read()
@@ -56,6 +56,15 @@ while True:
     # window['-OUTPUT-'].update('Hello ' + values['-INPUT-'].capitalize() + ", how are you?")
     # window['-OUTPUT-'].update('Hello ' + values['-INPUT-'] + "! Thanks for trying PySimpleGUI")
 
+    match event:
+        case 'add-to-do':
+            # print('get_todos()')
+            todos = functions.get_todos()
+            new_todos = values['-INPUT-'] + '\n'
+            # print(todos)
+            # print(new_todos)
+            todos.append(new_todos)
+            functions.write_todos(todos)
 # print("Hi ", values['-INPUT-'], ", Thanks for using this software")
 #
 window.close()
