@@ -42,7 +42,8 @@ layout = [[sg.Text("What is your name? ")],
           [sg.Button("Ok"), sg.Button("Quit")],
           ]
 
-window = sg.Window('My ToDo App', layout)
+# window = sg.Window('My ToDo App', layout)
+window = sg.Window('My ToDo App', layout, font=('Consolas', 16))
 
 while True:
     event, values = window.read()
@@ -51,9 +52,9 @@ while True:
         break
     # if event == sg.WINDOW_CLOSED or event == 'Quit':
     #     break
-    window['-OUTPUT-'].update('Hello ' + values['-INPUT-'] + ", how are you?")
+    window['-OUTPUT-'].update('Hello ' + values['-INPUT-'].capitalize() + ", how are you?")
     # window['-OUTPUT-'].update('Hello ' + values['-INPUT-'] + "! Thanks for trying PySimpleGUI")
 
-print("Hi ", values[0], ", Thanks for using this software")
+print("Hi ", values['-INPUT-'], ", Thanks for using this software")
 
 window.close()
