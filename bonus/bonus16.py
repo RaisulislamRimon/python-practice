@@ -10,7 +10,8 @@ layout = [
     # [sg.Text('Select destination folder: ')],
     [sg.Text('Select destination folder: '), sg.Input(), sg.Button("Choose")],
     # [sg.Input(), sg.Button("Choose")]
-    [sg.Button('Compress')]
+    [sg.Button('Compress')],
+    [sg.Button('Quit')]
 
 ]
 
