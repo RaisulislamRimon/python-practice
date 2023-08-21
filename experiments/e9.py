@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 
 layout = [
-    [sg.Text("Enter your name")],
+    [sg.Text("Enter your to-do: ")],
     [sg.Input(key='-INPUT-'), sg.Button("Add to-do")],
     [sg.Text(size=(40, 1), key='-OUTPUT-')],
     # [sg.Button("Close")]
@@ -16,6 +16,7 @@ while True:
         break
     # print(values['-INPUT-'].capitalize())
     # window['-OUTPUT-'].update('Hi ' + values['-INPUT-'] + ' , how are you?')
-    window['-OUTPUT-'].update('Hi ' + values['-INPUT-'].capitalize() + ' , how are you?')
+    # window['-OUTPUT-'].update('Hi ' + values['-INPUT-'].capitalize() + ' , how are you?')
+    window['-OUTPUT-'].update(values['-INPUT-'].capitalize() + '.')
 
 window.close()
