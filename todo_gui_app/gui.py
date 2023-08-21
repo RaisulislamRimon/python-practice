@@ -35,9 +35,9 @@ import functions
 import PySimpleGUI as sg
 
 # window = PySimpleGUI.window("My ToDo App", layout="")
-layout = [[sg.Text("What is your name? ")],
+layout = [[sg.Text("Write a to-do? ")],
           # [sg.Input()],
-          [sg.Input(key='-INPUT-')],
+          [sg.Input(key='-INPUT-'), sg.Button("Add to-do")],
           [sg.Text(size=(40, 1), key='-OUTPUT-')],
           [sg.Button("Ok"), sg.Button("Quit")],
           ]
@@ -53,7 +53,7 @@ while True:
         break
     # if event == sg.WINDOW_CLOSED or event == 'Quit':
     #     break
-    window['-OUTPUT-'].update('Hello ' + values['-INPUT-'].capitalize() + ", how are you?")
+    # window['-OUTPUT-'].update('Hello ' + values['-INPUT-'].capitalize() + ", how are you?")
     # window['-OUTPUT-'].update('Hello ' + values['-INPUT-'] + "! Thanks for trying PySimpleGUI")
 
 # print("Hi ", values['-INPUT-'], ", Thanks for using this software")
