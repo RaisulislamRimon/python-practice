@@ -1,4 +1,7 @@
+# simple gui app for file compress
+
 import PySimpleGUI as sg
+import shutil
 
 layout = [
     # [sg.Text('Select files to compress: ')],
@@ -17,7 +20,7 @@ while True:
     event, values = window.read()
     # print(event)
     if event == 'Compress':
-        print('hello')
+        shutil.make_archive('output1', 'zip', 'files')
     if event == sg.WINDOW_CLOSED or event == 'Quit':
         break
 
