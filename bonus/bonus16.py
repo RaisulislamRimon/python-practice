@@ -5,10 +5,10 @@ import shutil
 
 layout = [
     # [sg.Text('Select files to compress: ')],
-    [sg.Text('Select files to compress: '), sg.Input(), sg.Button("Choose")],
+    [sg.Text('Select files to compress: '), sg.Input(), sg.FilesBrowse("Choose")],
     # [sg.Input(), sg.Button("Choose")],
     # [sg.Text('Select destination folder: ')],
-    [sg.Text('Select destination folder: '), sg.Input(), sg.Button("Choose")],
+    [sg.Text('Select destination folder: '), sg.Input(), sg.FolderBrowse("Choose")],
     # [sg.Input(), sg.Button("Choose")]
     [sg.Button('Compress')],
     [sg.Button('Quit')]
@@ -19,9 +19,13 @@ window = sg.Window('File Compressor', layout)
 
 while True:
     event, values = window.read()
-    # print(event)
+    # print('event', event)
     if event == 'Compress':
-        shutil.make_archive('output1', 'zip', 'files')
+        print('event: ', event)
+        print('values: ', values)
+        print('values-0: ', values[0])
+        print('values-1: ', values[1])
+    # shutil.make_archive('output1', 'zip', 'files')
     if event == sg.WINDOW_CLOSED or event == 'Quit':
         break
 
