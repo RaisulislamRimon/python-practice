@@ -38,7 +38,7 @@ list_box = sg.Listbox(values=functions.get_todos(), key='todos', enable_events=T
 edit_button = sg.Button('Edit')
 delete_button = sg.Button('Delete')
 complete_button = sg.Button('Complete')
-error = sg.Text(size=(40, 2), key='-Error-')
+# error = sg.Text(size=(40, 2), key='-Error-')
 
 # window = PySimpleGUI.window("My ToDo App", layout="")
 layout = [[sg.Text("Write a to-do? ")],
@@ -55,7 +55,7 @@ layout = [[sg.Text("Write a to-do? ")],
           # ok button & quit button
           # [sg.Button("Ok"), sg.Button("Quit")],
           # [sg.Button("Refresh"), sg.Button("Quit")],
-          [error],
+          # [error],
           [sg.Button("Quit")]
           ]
 
@@ -80,6 +80,11 @@ while True:
 
     match event:
         case 'add-to-do':
+            if not values['-INPUT-']:
+                error = 'Write a to-do first'
+                # showing error message with popup
+                sg.popup(error, font=('Consolas', 13))
+                continue
             # print('get_todos()')
             todos = functions.get_todos()
             new_todos = values['-INPUT-'] + '\n'
@@ -95,8 +100,10 @@ while True:
             # if user input anything & doesn't select any todos from the list to edit,
             # then user will see this
             if not values['todos']:
-                print('Select todos to edit')
+                # print('Select todos to edit')
                 error = 'Select todos to edit'
+                # showing error message with popup
+                sg.popup(error, font=('Consolas', 13))
                 continue
             todos_to_edit = values['todos'][0]
             # print(todos_to_edit)
@@ -110,6 +117,9 @@ while True:
             window['todos'].update(todos)
         case 'Delete':
             if not values['todos']:
+                error = 'Select todos to Delete'
+                # showing error message with popup
+                sg.popup(error, font=('Consolas', 13))
                 continue
             todos_to_delete = values['todos'][0]
             todos = functions.get_todos()
@@ -121,6 +131,9 @@ while True:
             # print('delete btn clicked')
         case 'Complete':
             if not values['todos']:
+                error = 'Select todos to Complete'
+                # showing error message with popup
+                sg.popup(error, font=('Consolas', 13))
                 continue
             todo_to_complete = values['todos'][0]
             todos = functions.get_todos()
