@@ -34,12 +34,26 @@ import functions
 
 import PySimpleGUI as sg
 
+list_box = sg.Listbox(values=functions.get_todos(), key='todos', enable_events=True, size=(56, 10))
+edit_button = sg.Button('Edit')
+error = sg.Text(size=(40, 2), key='-Error-')
+
 # window = PySimpleGUI.window("My ToDo App", layout="")
 layout = [[sg.Text("Write a to-do? ")],
+          # this is for taking the input from the user
           # [sg.Input()],
+          # this is for taking the input from the user
           [sg.Input(key='-INPUT-'), sg.Button("Add to-do", key='add-to-do')],
+          # this is for showing the output
           [sg.Text(size=(40, 1), key='-OUTPUT-')],
-          [sg.Button("Ok"), sg.Button("Quit")],
+          # this is the listbox from todos.txt by get_todos function for showing the list
+          # [sg.Listbox(values=functions.get_todos(), key='todos', size=(56, 10))],
+          [list_box, edit_button],
+          # ok button & quit button
+          # [sg.Button("Ok"), sg.Button("Quit")],
+          # [sg.Button("Refresh"), sg.Button("Quit")],
+          [error],
+          [sg.Button("Quit")]
           ]
 
 # window = sg.Window('My ToDo App', layout)
@@ -51,10 +65,15 @@ while True:
     print('values', values)
     if event == sg.WINDOW_CLOSED or event == 'Quit':
         break
+    # if event == 'Refresh':
+    #     functions.get_todos()
     # if event == sg.WINDOW_CLOSED or event == 'Quit':
     #     break
     # window['-OUTPUT-'].update('Hello ' + values['-INPUT-'].capitalize() + ", how are you?")
     # window['-OUTPUT-'].update('Hello ' + values['-INPUT-'] + "! Thanks for trying PySimpleGUI")
+
+    # # while there is an error, it will show the error here
+    # window['-Error-'].update('Hey there, ' + values['-Error-'])
 
     match event:
         case 'add-to-do':
@@ -65,6 +84,31 @@ while True:
             # print(new_todos)
             todos.append(new_todos)
             functions.write_todos(todos)
+            # showing the last added to-do to the gui all on a sudden
+            # updated_todos = functions.get_todos()
+        case 'Edit':
+            # print('edit button clicked')
+            # if user input anything & doesn't select any todos from the list to edit,
+            # then user will see this
+            if not values['todos']:
+                print('Select todos to edit')
+                error = 'Select todos to edit'
+                continue
+            todos_to_edit = values['todos'][0]
+            # print(todos_to_edit)
+            new_edited_todo = values['-INPUT-'] + '\n'
+            # print(new_edited_todo)
+            todos = functions.get_todos()
+            index = todos.index(todos_to_edit)
+            # print(index)
+            todos[index] = new_edited_todo
+            functions.write_todos(todos)
+            window['todos'].update(todos)
 # print("Hi ", values['-INPUT-'], ", Thanks for using this software")
 #
+
+# while there is an error, it will show the error here
+# window['-Error-'].update('Hey there, ' + values['-Error-'])
+# print("Hi ", values['-Error-'], ", Thanks for using this software")
+
 window.close()
