@@ -1,0 +1,10 @@
+if we want to create an executable file or desktop software,
+then we need to use pyinstaller.
+
+Steps:
+-------
+step 1: install 'pyinstaller'
+step 2: run this command:
+        pyinstaller --onefile --windowed --clean gui.py
+
+this will create an executable file for windows operating system.
