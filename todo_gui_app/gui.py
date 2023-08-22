@@ -37,6 +37,7 @@ import PySimpleGUI as sg
 list_box = sg.Listbox(values=functions.get_todos(), key='todos', enable_events=True, size=(56, 10))
 edit_button = sg.Button('Edit')
 delete_button = sg.Button('Delete')
+complete_button = sg.Button('Complete')
 error = sg.Text(size=(40, 2), key='-Error-')
 
 # window = PySimpleGUI.window("My ToDo App", layout="")
@@ -49,7 +50,7 @@ layout = [[sg.Text("Write a to-do? ")],
           [sg.Text(size=(40, 1), key='-OUTPUT-')],
           # this is the listbox from todos.txt by get_todos function for showing the list
           # [sg.Listbox(values=functions.get_todos(), key='todos', size=(56, 10))],
-          [list_box, edit_button, delete_button],
+          [list_box, edit_button, complete_button, delete_button],
           # [delete_button],
           # ok button & quit button
           # [sg.Button("Ok"), sg.Button("Quit")],
@@ -118,7 +119,17 @@ while True:
             functions.write_todos(todos)
             window['todos'].update(todos)
             # print('delete btn clicked')
+        case 'Complete':
+            if not values['todos']:
+                continue
+            todo_to_complete = values['todos'][0]
+            todos = functions.get_todos()
+            todos.remove(todo_to_complete)
+            functions.write_todos(todos)
+            window['todos'].update(values=todos)
         case 'todos':
+            if not values['todos']:
+                continue
             window['-INPUT-'].update(values['todos'][0])
 # print("Hi ", values['-INPUT-'], ", Thanks for using this software")
 #
