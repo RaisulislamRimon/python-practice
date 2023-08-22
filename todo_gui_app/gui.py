@@ -118,6 +118,8 @@ while True:
             functions.write_todos(todos)
             window['todos'].update(todos)
             # print('delete btn clicked')
+        case 'todos':
+            window['-INPUT-'].update(values['todos'][0])
 # print("Hi ", values['-INPUT-'], ", Thanks for using this software")
 #
 
