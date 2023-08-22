@@ -127,6 +127,7 @@ while True:
             todos.remove(todo_to_complete)
             functions.write_todos(todos)
             window['todos'].update(values=todos)
+            window['-INPUT-'].update('')
         case 'todos':
             if not values['todos']:
                 continue
