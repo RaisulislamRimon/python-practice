@@ -80,7 +80,8 @@ while True:
         break
 
     # showing clock
-    window['clock'].update(value=time.strftime('%b %d, %Y; %H:%M:%S %p'))
+    # window['clock'].update(value=time.strftime('%b %d, %Y; %H:%M:%S %p'))
+    window['clock'].update(value=time.strftime('%b %d, %Y; %I:%M:%S %p'))
 
     # if event == 'Refresh':
     #     functions.get_todos()
