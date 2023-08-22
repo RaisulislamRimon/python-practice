@@ -33,7 +33,15 @@
 import functions
 
 import PySimpleGUI as sg
+import time
 
+sg.theme('DarkTeal2')
+# sg.theme('DarkPurple2')
+# sg.theme('DarkPurple4')
+# sg.theme('DarkGray')
+# sg.theme('Topanga')
+
+clock = sg.Text('', key='clock')
 list_box = sg.Listbox(values=functions.get_todos(), key='todos', enable_events=True, size=(56, 10))
 edit_button = sg.Button('Edit')
 delete_button = sg.Button('Delete')
@@ -46,6 +54,8 @@ layout = [[sg.Text("Write a to-do? ")],
           # [sg.Input()],
           # this is for taking the input from the user
           [sg.Input(key='-INPUT-'), sg.Button("Add to-do", key='add-to-do')],
+          # showing the current time here
+          [clock],
           # this is for showing the output
           [sg.Text(size=(40, 1), key='-OUTPUT-')],
           # this is the listbox from todos.txt by get_todos function for showing the list
@@ -63,11 +73,15 @@ layout = [[sg.Text("Write a to-do? ")],
 window = sg.Window('My ToDo App', layout, font=('Consolas', 13))
 
 while True:
-    event, values = window.read()
+    event, values = window.read(timeout=10)
     print('event', event)
     print('values', values)
     if event == sg.WINDOW_CLOSED or event == 'Quit':
         break
+
+    # showing clock
+    window['clock'].update(value=time.strftime('%b %d, %Y; %H:%M:%S %p'))
+
     # if event == 'Refresh':
     #     functions.get_todos()
     # if event == sg.WINDOW_CLOSED or event == 'Quit':
