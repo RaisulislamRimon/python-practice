@@ -1,0 +1,13 @@
+if we want to run this on web browser,
+then we need to use streamlit.
+
+Steps:
+-------
+step 1: install 'streamlit'
+step 2: run this command:
+        streamlit run filename.py
+
+this will show a web version of the app.
+
+
+
